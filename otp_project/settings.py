@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'otp_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'library_registration',
+        'USER':'root',
+        'PASSWORD':'satyam@4545',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
