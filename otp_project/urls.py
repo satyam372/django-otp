@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from otp_app.views import CheckRegistrationStatus
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('validate/', CheckRegistrationStatus.as_view(), name = 'validate')
 ]
