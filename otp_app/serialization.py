@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Student, Device
+from .models import Device
 
 
 class DeviceSerialization(serializers.ModelSerializer):

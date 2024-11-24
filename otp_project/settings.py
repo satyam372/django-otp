@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-az&#8kp!&jx=x_zarme0^8+o!iuis%h*gbht&mv1lj-d)$49d=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.66.224', '192.168.225.224', 'localhost', '127.0.0.1', '172.22.116.64']
+
 
 
 # Application definition
@@ -46,11 +47,14 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # 'otp_app.middleware.ApiProxyMiddleware',  # Place it here
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'otp_app.middleware.ApiProxyMiddleware', 
 ]
+
 
 ROOT_URLCONF = 'otp_project.urls'
 
@@ -79,14 +83,14 @@ WSGI_APPLICATION = 'otp_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'library_registration',
-        'USER':'root',
-        'PASSWORD':'satyam@4545',
-        'HOST':'localhost',
+        'NAME': 'database-1',
+        'USER':'admin',
+        'PASSWORD':'satyam4545',
+        'HOST':'database-1.cd84o4c22p35.us-east-1.rds.amazonaws.com',
         'PORT':'3306',
     }
 }
-
+# 'ec2-3-95-26-135.compute-1.amazonaws.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
