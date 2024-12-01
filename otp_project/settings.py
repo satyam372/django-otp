@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-az&#8kp!&jx=x_zarme0^8+o!iuis%h*gbht&mv1lj-d)$49d=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.66.224', '192.168.225.224', 'localhost', '127.0.0.1', '172.22.116.64']
+ALLOWED_HOSTS = ['192.168.66.224', '192.168.225.224', 'localhost', '127.0.0.1', '172.22.116.64', 'https', 'libentry.in', 'www.libentry.in', '43.204.112.91']
 
 
 

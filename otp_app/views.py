@@ -55,10 +55,6 @@ class CheckRegistrationStatus(APIView):
         device_id_base64 = request.data.get('device_id')
         key_base64 = request.data.get('key')
         iv = request.data.get('iv')
-        print(encrypted_enrollment_no_base64)
-        print(device_id_base64)
-        print(key_base64)
-        print(iv)
         
         private_key_path = "C://Users//Satyam//Desktop//otp_project//private_key.pem"
         try:
@@ -66,8 +62,6 @@ class CheckRegistrationStatus(APIView):
             decrypted_key = decrypt_key(key_base64, private_key)
             enrollment_no = decrypt_data(encrypted_enrollment_no_base64, decrypted_key, iv)
             device_id = decrypt_data(device_id_base64, decrypted_key, iv)
-            print(f"Decrypted Enrollment No: {enrollment_no}")
-            print(f"Decrypted Device ID: {device_id}")
 
             if enrollment_no:
                 try:
@@ -77,10 +71,9 @@ class CheckRegistrationStatus(APIView):
                 
                 student_name = student.name
                 student_department = student.department
-                student_specialization = student.specialization  # Retrieve the student's name
+                student_specialization = student.specialization  
 
             try:
-                # Check if the device is already registered for the student
                 Device.objects.get(enrollment_no=student, device_id=device_id)
                 token = generate_jwt_token(student, device_id)
                 return Response({
@@ -126,45 +119,15 @@ class Verify_Token(APIView):
         else:
             return Response({"message": "Token not provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-
-# class GetPublicKey(APIView):
-#     def get(self):
-#         try:
-#             key_generator = GeneratePublicPrivateKey()
-#             key_generator.generate_keys()  # Instantiate the key generator
-#             public_key = key_generator.get_public_key()  # Retrieve the public key
-#             private_key = key_generator.get_private_key()
-#             key_generator.save_private_key_to_file("private_key.pem")
-#             key_generator.save_public_key_to_file("public_key.pem")
-
-#             print("Keys saved successfully.")
-         
-            
-#             return Response({"public_key": public_key.decode('utf-8')}, status=status.HTTP_200_OK)
-
-#         except Exception as e:
-#             logger.error("Error generating public key: %s", e)
-#             return Response(
-#                 {"error": "Failed to generate public key"},
-#                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
-#             )
-
-
-from django.http import JsonResponse
-from django.views import View
-from otp_app.security.keys import GeneratePublicPrivateKey
-import logging
-
-logger = logging.getLogger(__name__)
 class GetPublicKey(APIView):
-    def post(self, request):  # Change from get to post
+    def post(self, request):  
         try:
             key_generator = GeneratePublicPrivateKey()
             key_generator.generate_keys()
             public_key = key_generator.get_public_key()
             private_key = key_generator.get_private_key()
-            key_generator.save_private_key_to_file("private_key.pem")
-            key_generator.save_public_key_to_file("public_key.pem")
+            key_generator.save_private_key_to_file("/etc/django_keys/private_key.pem")
+            key_generator.save_public_key_to_file("/etc/django_keys/public_key.pem")
 
             return Response({"public_key": public_key.decode('utf-8')}, status=status.HTTP_200_OK)
 
