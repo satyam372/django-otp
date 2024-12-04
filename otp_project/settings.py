@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'otp_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'database-1',
+        'NAME': 'student',
         'USER':'admin',
         'PASSWORD':'satyam4545',
         'HOST':'database-1.cjagqmqamdqc.ap-south-1.rds.amazonaws.com',
