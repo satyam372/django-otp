@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'database-1',
         'USER':'admin',
         'PASSWORD':'satyam4545',
-        'HOST':'database-1.cd84o4c22p35.us-east-1.rds.amazonaws.com',
+        'HOST':'database-1.cjagqmqamdqc.ap-south-1.rds.amazonaws.com',
         'PORT':'3306',
     }
 }
