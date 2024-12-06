@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-az&#8kp!&jx=x_zarme0^8+o!iuis%h*gbht&mv1lj-d)$49d=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.66.224', '192.168.225.224', 'localhost', '127.0.0.1', '172.22.116.64', 'https', 'libentry.in', 'www.libentry.in', '43.204.112.91']
+ALLOWED_HOSTS = ['192.168.66.224', '192.168.225.224', 'localhost', '127.0.0.1', '172.22.116.64', 'https', 'libentry.in', 'www.libentry.in', '43.204.112.91', '192.168.208.224']
 
 
 
@@ -82,6 +82,17 @@ WSGI_APPLICATION = 'otp_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'library_registration',
+#         'USER':'root',
+#         'PASSWORD':'satyam@4545',
+#         'HOST':'localhost',
+#         'PORT':'3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -111,6 +122,25 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 
 
 # Internationalization
