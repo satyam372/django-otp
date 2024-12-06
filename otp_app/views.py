@@ -56,7 +56,7 @@ class CheckRegistrationStatus(APIView):
         key_base64 = request.data.get('key')
         iv = request.data.get('iv')
         
-        private_key_path = "C://Users//Satyam//Desktop//otp_project//private_key.pem"
+        private_key_path = "/etc/django_keys/private_key.pem"
         try:
             private_key = load_private_key_from_file(private_key_path)
             decrypted_key = decrypt_key(key_base64, private_key)
