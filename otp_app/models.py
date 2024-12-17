@@ -17,3 +17,17 @@ class Device(models.Model):
 
     def __str__(self):
         return self.device_id
+
+class Records(models.Model):
+    rollno = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
+    intime = models.DateTimeField()
+    outtime = models.DateTimeField()
+    department = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} ({self.rollno})"
+
+
+
+
